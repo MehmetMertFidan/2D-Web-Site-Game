@@ -1,8 +1,5 @@
 2D-Web-Site-Game
-asfsafa
-fasacs
-savsvsass.asasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-vsasaca
-sacs.
-asdsadd
-  
+Bu proje 2 boyutlu bir web tabanlı oyundur.
+
+Oyuna Giriş: 
+Oyuna giriş yapmak için 
