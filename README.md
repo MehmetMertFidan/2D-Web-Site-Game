@@ -1,6 +1,6 @@
 2D-Web-Site-Game
 
-Bu proje 2 boyutlu bir web tabanlı oyundur.
+Bu proje ters şeride girdiğiniz yolda karşıdan gelen arabaların arasından sıyrılmaya çalışacağınız 2 boyutlu bir web tabanlı oyundur. 
 
 Kullanılan Teknolojiler:
 
