@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Racer</title>
+
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .myCanvas{
+            background-color: orange;
+        }
+        .screen{
+            height: 100vh;
+            width: 100%;
+            background-color: orange;
+            position: relative;
+        }
+        .button{
+            height: 100px;
+            width: 450px;
+            left: 540px;
+            background-image: linear-gradient(#FAF9F9,#FAF9F9);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: black;
+            font-size: 70px;
+            text-align: center;
+            padding-top: 20px;
+            top: 250px;
+            position: absolute;
+        }
+        .name{
+            position: absolute;
+            color: white;
+            font-size: 50px;
+            left: 100px;
+            top: 30px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .score{
+            position: absolute;
+            color: white;
+            font-size: 40px;
+            left: 100px;
+            top: 100px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+    </style>
+
+</head>
+<body>
+
+    <div class="screen"><div class="name">Traffic Racer</div><div class="score" id="score"></div><div class="button" id="button" onclick="start()">Play</div><canvas class="myCanvas" id="myCanvas" width="1534px" height="717px"></canvas></div>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "black";
+        ctx.fillRect(540,0,450,717);
+        var car = new Image();
+        var enemyCar = new Image();
+        var line = new Image();  
+        
+        enemyCar.src = "360_F_237486868_wcooMM1TAVAwXID2PHoWgGjvxhocMcU9_40x80__1_-removebg-previewenemy.png";
+        car.src = "360_F_237486868_wcooMM1TAVAwXID2PHoWgGjvxhocMcU9_40x80__1_-removebg-preview.png";
+        line.src = "maxresdefault_40x120.jpg";
+        var possition1=0;
+        var possition2=280;
+        var possition3=560;
+        var carX=650;
+        var enemyCar1X=600,enemyCar1Y=-200;
+        var enemyCar2X=780,enemyCar2Y=-350;
+        var enemyCar3X=900,enemyCar3Y=-524;
+        var items=[possition1,possition2,possition3,enemyCar1X,enemyCar2X,enemyCar3X,enemyCar1Y,enemyCar2Y,enemyCar3Y];
+
+        document.addEventListener("keydown",keyPush);
+        
+        function keyPush(e){
+            if(e.keyCode==37){
+                if(carX>547){
+                carX-=8;
+                }
+            }
+            if(e.keyCode==39){
+                if(carX<940){
+                carX+=8;
+                }
+            }  
+        }
+        var wait=0;
+        function start(){
+            document.getElementById("button").style.display="none";
+            document.getElementById("score").innerHTML="Score: "+score;
+            wait=1;
+            draw();
+        }
+        var score=0;
+        document.getElementById("score").innerHTML="Score: "+score;
+        function draw(){
+            ctx.fillRect(540,0,450,717); 
+            ctx.drawImage(line,745,items[0]);
+            ctx.drawImage(line,745,items[1]);
+            ctx.drawImage(line,745,items[2]);
+            ctx.drawImage(enemyCar,items[3],items[6]);
+            ctx.drawImage(enemyCar,items[4],items[7]);
+            ctx.drawImage(enemyCar,items[5],items[8]);
+            ctx.drawImage(car,carX,500);
+            
+            for(var i=0;i<items.length;i++){
+                if(i<3){
+                    if(items[i]>714){
+                        items[i]=-70;
+                    }
+                    items[i]+=7;                   
+                }
+                else if(i>5){
+                    if((items[i]+80>=500&&items[i]<=580)&&((items[i-3]+40>=carX&&items[i-3]+40<=carX+40)||(items[i-3]>=carX&&items[i-3]<=carX+40))){
+                        end();
+                    }
+                    else{
+                        if(items[i]>620&&items[i]<626){
+                            score++;
+                            document.getElementById("score").innerHTML="Score: "+score;
+                        }
+                        if(items[i]>750){
+                        items[i]=-104;
+                        items[i-3]=(Math.random()*(450-120))+540;
+                        }
+                        items[i]+=6;      
+                    }
+                }
+            }
+
+            if(wait)
+            requestAnimationFrame(draw);
+        }       
+        function end(){
+            score=0;
+            wait=0;
+            carX=650;
+            items[3]=600;
+            items[4]=780;
+            items[5]=900;
+            items[6]=-200;
+            items[7]=-350;
+            items[8]=-520;
+            document.getElementById("button").style.display="block";
+        }
+       </script>
+
+</body> 
+</html>
