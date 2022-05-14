@@ -2,4 +2,4 @@
 Bu proje 2 boyutlu bir web tabanlı oyundur.
 
 Oyuna Giriş: 
-Oyuna giriş yapmak için 
+Oyuna giriş yapmak için yukarıdaki 2doyun.html dosyasını ind
