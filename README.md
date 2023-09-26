@@ -24,6 +24,3 @@ Kaza yaptığında Play butonuna basarak hızlıca tekrar başla
 
 ![Adsız2](https://user-images.githubusercontent.com/76568439/168427492-eae03a5e-5fd0-4cb6-9c5b-6cd44ee4bba6.png)
 
-Oyuna Giriş: 
-
-Oyuna giriş yapmak için tek yapmanız gereken bu linke tıklamak http://trafficracer.cf/2doyun.html
